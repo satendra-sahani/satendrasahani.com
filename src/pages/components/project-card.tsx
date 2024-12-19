@@ -25,19 +25,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="group relative overflow-hidden rounded-lg bg-gray-800/50 p-6 backdrop-blur-md hover:shadow-xl transition-all duration-300"
     >
       <div className="mb-6 aspect-video relative overflow-hidden rounded-lg">
-        <Image
+        {project?.image && <Image
           src={project.image}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        />}
       </div>
 
-      <h3 className="mb-3 text-2xl font-bold text-gray-100">{project.title}</h3>
-      <p className="mb-4 text-lg text-gray-300">{project.description}</p>
+      {project?.title && <h3 className="mb-3 text-2xl font-bold text-gray-100">{project.title}</h3>}
+      {project?.description &&<p className="mb-4 text-lg text-gray-300">{project.description}</p>}
 
       <div className="mb-6 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
+        {project?.tags.map((tag) => (
           <span
             key={tag}
             className="rounded-full bg-teal-900/30 px-3 py-1 text-sm font-medium text-teal-300"
@@ -55,7 +55,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           Preview
         </button>
         <a
-          href={project.url}
+          href={project?.url}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded border border-teal-600 px-6 py-2 text-base font-medium text-teal-300 hover:bg-teal-600/10 transition-colors"
@@ -79,9 +79,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             className="relative h-[80vh] w-[80vw] overflow-hidden rounded-lg shadow-2xl"
           >
             <iframe
-              src={project.url}
+              src={project?.url}
               className="h-full w-full border-0"
-              title={project.title}
+              title={project?.title}
             />
           </motion.div>
         </motion.div>
